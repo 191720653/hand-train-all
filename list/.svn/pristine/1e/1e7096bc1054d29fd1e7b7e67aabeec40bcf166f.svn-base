@@ -1,0 +1,43 @@
+package com.hand.list;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+        
+        hashMap.put("a", "one");
+        hashMap.put("b", "two");
+        hashMap.put("c", "three");
+        hashMap.put("d", "four");
+        hashMap.put("e", "five");
+        
+        System.out.println(hashMap);
+        
+        if(hashMap.containsKey("d")){
+        	System.out.println("hashMap.containsKey(\"d\"): "+hashMap.containsKey("d"));
+        }
+        if(hashMap.containsValue("three")){
+        	System.out.println("hashMap.containsValue(\"three\"): "+hashMap.containsValue("three"));
+        }
+        
+        Set<String> set = hashMap.keySet();
+        Iterator<String> iterator = set.iterator();
+        while(iterator.hasNext()){
+        	System.out.println(iterator.next());
+        }
+        
+        System.out.println("The end!");
+    }
+}

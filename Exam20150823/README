@@ -1,0 +1,11 @@
+执行项目步骤：
+
+1.mvn clean
+
+2.mvn compile
+
+3.mvn tomcat:run
+
+4.打开浏览器，访问http://localhost:8080/Exam1
+
+ps:若数据操作成功则返回index主页面，否则条到login页面！

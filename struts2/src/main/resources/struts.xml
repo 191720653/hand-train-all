@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="1000000" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<package name="helloworld" extends="struts-default">
+		<interceptors>
+			<interceptor name="myInterceptor" class="com.zehao.interceptor.MyInterceptor" />
+			<interceptor-stack name="basicStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="params" />
+				<interceptor-ref name="myInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="hello" class="com.zehao.action.HelloWorldAction"
+			method="execute">
+			<interceptor-ref name="basicStack" />
+			<result name="success">/hello.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<action name="upload" class="com.zehao.action.FileAction"
+			method="execute">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/jpeg,image/gif</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success" type="freemarker">
+				<param name="location">/upload_success.fm</param>
+			</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<action name="login" class="com.zehao.action.LoginAction"
+			method="execute">
+			<interceptor-ref name="basicStack" />
+			<result name="input">/login.jsp</result>
+			<result name="success">/hello.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+	</package>
+</struts>

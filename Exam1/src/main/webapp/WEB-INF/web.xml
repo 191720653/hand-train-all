@@ -1,0 +1,87 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	<filter>
+		<filter-name>PermissionFilter</filter-name>
+		<filter-class>com.hand.filter.PermissionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PermissionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<display-name>LoginServlet</display-name>
+		<description></description>
+		<servlet-class>com.hand.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShowFilmsServlet</servlet-name>
+		<display-name>ShowFilmsServlet</display-name>
+		<description></description>
+		<servlet-class>com.hand.servlet.ShowFilmsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddFilmServlet</servlet-name>
+		<display-name>AddFilmServlet</display-name>
+		<description></description>
+		<servlet-class>com.hand.servlet.AddFilmServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteFilmServlet</servlet-name>
+		<display-name>DeleteFilmServlet</display-name>
+		<description></description>
+		<servlet-class>com.hand.servlet.DeleteFilmServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetLanguageServlet</servlet-name>
+		<display-name>GetLanguageServlet</display-name>
+		<description></description>
+		<servlet-class>com.hand.servlet.GetLanguageServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetInfoServlet</servlet-name>
+		<display-name>GetInfoServlet</display-name>
+		<description></description>
+		<servlet-class>com.hand.servlet.GetInfoServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateServlet</servlet-name>
+		<display-name>UpdateServlet</display-name>
+		<description></description>
+		<servlet-class>com.hand.servlet.UpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowFilmsServlet</servlet-name>
+		<url-pattern>/ShowFilmsServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddFilmServlet</servlet-name>
+		<url-pattern>/AddFilmServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteFilmServlet</servlet-name>
+		<url-pattern>/DeleteFilmServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetLanguageServlet</servlet-name>
+		<url-pattern>/GetLanguageServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetInfoServlet</servlet-name>
+		<url-pattern>/GetInfoServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateServlet</servlet-name>
+		<url-pattern>/UpdateServlet</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+	<welcome-file>index.jsp</welcome-file></welcome-file-list>
+</web-app>

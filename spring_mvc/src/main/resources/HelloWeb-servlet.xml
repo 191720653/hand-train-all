@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.1.xsd
+   http://www.springframework.org/schema/mvc
+   http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+   http://www.springframework.org/schema/aop
+   http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<context:component-scan base-package="spring_mvc.all" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" />
+	<mvc:annotation-driven />
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="spring_mvc.all.SpringException">
+					ExceptionPage
+				</prop>
+			</props>
+		</property>
+		<property name="defaultErrorView" value="error"></property>
+	</bean>
+
+	<bean id="log" class="spring_mvc.all.Log" />
+
+	<aop:config expose-proxy="true" proxy-target-class="true">
+		<aop:aspect id="aspect" ref="log">
+			<!--配置包下所有类或接口的所有方法 -->
+			<aop:pointcut id="logService" expression="execution(* spring_mvc.all.*.*(..))" />
+			<aop:before pointcut-ref="logService" method="doBefore" />
+			<aop:after pointcut-ref="logService" method="doAfter" />
+			<aop:around pointcut-ref="logService" method="doAround" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
